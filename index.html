@@ -190,9 +190,7 @@
                 </ul>
             </div>
             <div class="form-container">
-                <form action="https://formspree.io/f/mpwvgono" method="POST">
-                    
-                    <input type="hidden" name="_next" value="https://mattjab11.github.io/GymCaller-site/success.html">
+                <form id="gymcaller-form" action="https://formspree.io/f/mpwvgono" method="POST">
                     
                     <label>Name</label>
                     <input type="text" name="Name" placeholder="Your Name" required>
@@ -215,7 +213,7 @@
     
                     <input type="hidden" name="_subject" value="New GymCaller Demo Request!">
 
-                    <button type="submit" class="submit-btn">Request a Demo</button>
+                    <button type="submit" id="submit-btn" class="submit-btn">Request a Demo</button>
                 </form>
             </div>
         </div>
@@ -237,8 +235,46 @@
         <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 20px;">&copy; 2025 GymCaller. Direct. Professional. Informative.</p>
     </footer>
 
+    <script>
+        const form = document.getElementById("gymcaller-form");
+        const button = document.getElementById("submit-btn");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            button.disabled = true;
+            button.innerText = "Sending...";
+            
+            const data = new FormData(event.target);
+            
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Redirect to success page
+                    window.location.href = "success.html";
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! There was a problem submitting your form");
+                        }
+                        button.disabled = false;
+                        button.innerText = "Request a Demo";
+                    })
+                }
+            }).catch(error => {
+                alert("Oops! There was a problem submitting your form");
+                button.disabled = false;
+                button.innerText = "Request a Demo";
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+    </script>
+
 </body>
 </html>
-
-
-
