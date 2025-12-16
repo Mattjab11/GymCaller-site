@@ -15,8 +15,25 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; } /* Makes clicking links smooth */
+        html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: var(--soft-white); color: var(--midnight); line-height: 1.6; }
+
+        /* Top Contact Bar */
+        .top-bar {
+            background: var(--teal);
+            color: var(--midnight);
+            padding: 8px 8%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1001;
+        }
+        .top-bar a { color: var(--midnight); text-decoration: none; }
 
         /* Navigation */
         nav { 
@@ -27,7 +44,7 @@
             align-items: center; 
             position: fixed; 
             width: 100%; 
-            top: 0; 
+            top: 35px; /* Pushed down by top bar */
             z-index: 1000;
             border-bottom: 1px solid rgba(20, 184, 166, 0.2);
         }
@@ -50,7 +67,7 @@
             text-align: center;
             color: white;
             padding: 0 5%;
-            margin-top: 60px;
+            margin-top: 95px; /* Offset for both bars */
         }
         .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 20px; }
         .hero-content p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; color: #cbd5e1; }
@@ -86,27 +103,33 @@
         .booking-layout { display: flex; gap: 50px; flex-wrap: wrap; }
         .booking-info { flex: 1; min-width: 300px; }
         .form-container { flex: 1; min-width: 300px; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
+        label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.9rem; }
         .submit-btn { width: 100%; background: var(--teal); color: var(--midnight); border: none; padding: 15px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 1rem; }
 
         /* Footer */
         footer { background: var(--midnight); color: white; padding: 60px 10% 20px; text-align: center; }
+        .footer-contact { margin: 25px 0; color: #cbd5e1; }
+        .footer-contact a { color: var(--teal); text-decoration: none; margin: 0 15px; }
         .team { display: flex; justify-content: center; gap: 50px; margin: 30px 0; border-top: 1px solid #334155; padding-top: 30px; }
         
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* Simplified for mobile example */
+            .nav-links { display: none; }
+            .top-bar { justify-content: center; gap: 10px; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
+    <div class="top-bar">
+        <span>Email: <a href="mailto:gymcallerai@gmail.com">gymcallerai@gmail.com</a></span>
+        <span>Phone: <a href="tel:7088186429">708-818-6429</a></span>
+    </div>
+
     <nav>
         <a href="#" class="logo-container" style="display: flex; align-items: center; text-decoration: none;">
-            <img src="logo.png" alt="GymCaller Logo" style="height: 50px; width: auto; margin-right: 12px; border-radius: 4px;">
-        
-            <div class="logo-text" style="color: white; font-weight: 800; font-size: 1.5rem;">
-                Gym<span style="color: #14b8a6;">Caller</span>
-            </div>
+            <img src="logo.jpg" alt="GymCaller Logo" style="height: 45px; width: auto; margin-right: 12px; border-radius: 4px;">
+            <div class="logo-text">Gym<span>Caller</span></div>
         </a>
         <div class="nav-links">
             <a href="#features">Features</a>
@@ -115,12 +138,11 @@
             <a href="#book-demo" class="btn-nav">Book Demo</a>
         </div>
     </nav>
-    
 
     <header>
         <div class="hero-content">
             <h1>Never Miss a Lead Again.</h1>
-            <p>GymCaller is the 24/7 AI receptionist built specifically for gyms. It speaks naturally, answers questions, and books tours while you focus on training.</p>
+            <p>GymCaller is the 24/7 AI receptionist built specifically for gyms. Answer questions and book tours while you focus on training.</p>
             <a href="#book-demo" class="btn-nav" style="padding: 15px 40px; font-size: 1.1rem; text-decoration: none;">Start 1-Week Free Trial</a>
         </div>
     </header>
@@ -131,37 +153,17 @@
             <p>Built by gym experts to solve real operational problems.</p>
         </div>
         <div class="features-grid">
-            <div class="feature-card">
-                <h3>24/7 Coverage</h3>
-                <p>Answers inbound calls at any time—weekends, holidays, and after-hours coverage included.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Smart Tour Booking</h3>
-                <p>Guides prospects through your specific intro process and collects key lead info like name, goals, and intent.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Full Accountability</h3>
-                <p>Provides full call transcripts for every conversation so your staff can review exactly what was discussed.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Policy Intelligence</h3>
-                <p>Answers FAQs about membership ranges, class types, and gym policies based on your unique data.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Natural Voice</h3>
-                <p>Handles real conversations without rigid scripts, providing a consistent and professional response every time.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Staff Optimization</h3>
-                <p>Reduces front desk workload, allowing your team to focus on the members already in the building.</p>
-            </div>
+            <div class="feature-card"><h3>24/7 Coverage</h3><p>Answers inbound calls at any time—weekends, holidays, and after-hours coverage included.</p></div>
+            <div class="feature-card"><h3>Smart Tour Booking</h3><p>Guides prospects through your specific intro process and collects key lead info.</p></div>
+            <div class="feature-card"><h3>Full Accountability</h3><p>Provides full call transcripts for every conversation so your staff can review details.</p></div>
+            <div class="feature-card"><h3>Policy Intelligence</h3><p>Answers FAQs about membership ranges, class types, and gym policies.</p></div>
+            <div class="feature-card"><h3>Natural Voice</h3><p>Handles real conversations without rigid scripts, providing a professional response.</p></div>
+            <div class="feature-card"><h3>Staff Optimization</h3><p>Reduces front desk workload, allowing your team to focus on members on the floor.</p></div>
         </div>
     </section>
 
     <section id="pricing" class="section" style="background: #f1f5f9;">
-        <div class="section-title">
-            <h2>Simple Pricing</h2>
-        </div>
+        <div class="section-title"><h2>Simple Pricing</h2></div>
         <div class="price-container">
             <div class="price-card">
                 <h3>The Professional Plan</h3>
@@ -182,7 +184,7 @@
         <div class="booking-layout">
             <div class="booking-info">
                 <h2>Qualify Your Gym</h2>
-                <p style="margin: 20px 0;">We’re locally owned in <strong>La Grange Park, IL</strong> and we want to ensure GymCaller is the right fit for your operations. Answer two quick questions to see the demo.</p>
+                <p style="margin: 20px 0;">We’re locally owned in <strong>La Grange Park, IL</strong>. Answer two quick questions to see the demo.</p>
                 <ul style="list-style: none;">
                     <li><strong>✓</strong> Immediate value for busy owners.</li>
                     <li><strong>✓</strong> 2-minute setup process.</li>
@@ -191,28 +193,21 @@
             </div>
             <div class="form-container">
                 <form id="gymcaller-form" action="https://formspree.io/f/mpwvgono" method="POST">
-                    
                     <label>Name</label>
                     <input type="text" name="Name" placeholder="Your Name" required>
-    
                     <label>Gym Name</label>
                     <input type="text" name="Gym Name" placeholder="Gym Name" required>
-    
                     <label>Email</label>
                     <input type="email" name="_replyto" placeholder="Your Email" required>
-    
                     <label>Biggest Phone Challenge?</label>
                     <select name="Challenge" required>
                         <option value="" disabled selected>Select an option...</option>
                         <option value="No coverage after-hours">No coverage after-hours</option>
                         <option value="Inconsistent staff responses">Inconsistent staff responses</option>
                     </select>
-    
                     <label>Tour Booking Process</label>
                     <textarea name="Current Process" placeholder="Tell us a little bit about your gym!" rows="3"></textarea>
-    
                     <input type="hidden" name="_subject" value="New GymCaller Demo Request!">
-
                     <button type="submit" id="submit-btn" class="submit-btn">Request a Demo</button>
                 </form>
             </div>
@@ -220,17 +215,18 @@
     </section>
 
     <footer id="about">
-        <h2>GymCaller AI</h2>
+        <div class="logo-text">Gym<span>Caller</span> AI</div>
+        
+        <div class="footer-contact">
+            <p><strong>Contact Us:</strong></p>
+            <a href="mailto:gymcallerai@gmail.com">gymcallerai@gmail.com</a> | 
+            <a href="tel:7088186429">708-818-6429</a>
+        </div>
+
         <p>Locally owned and operated in La Grange Park, Illinois.</p>
         <div class="team">
-            <div>
-                <strong>Billy Schwerha</strong><br>
-                Founder
-            </div>
-            <div>
-                <strong>Matt Jablonski</strong><br>
-                Lead Developer
-            </div>
+            <div><strong>Billy Schwerha</strong><br>Founder</div>
+            <div><strong>Matt Jablonski</strong><br>Lead Developer</div>
         </div>
         <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 20px;">&copy; 2025 GymCaller. Direct. Professional. Informative.</p>
     </footer>
@@ -249,23 +245,14 @@
             fetch(event.target.action, {
                 method: form.method,
                 body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    // Redirect to success page
                     window.location.href = "success.html";
                 } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            alert(data["errors"].map(error => error["message"]).join(", "));
-                        } else {
-                            alert("Oops! There was a problem submitting your form");
-                        }
-                        button.disabled = false;
-                        button.innerText = "Request a Demo";
-                    })
+                    alert("Oops! There was a problem submitting your form");
+                    button.disabled = false;
+                    button.innerText = "Request a Demo";
                 }
             }).catch(error => {
                 alert("Oops! There was a problem submitting your form");
@@ -275,7 +262,5 @@
         }
         form.addEventListener("submit", handleSubmit);
     </script>
-
 </body>
 </html>
-
