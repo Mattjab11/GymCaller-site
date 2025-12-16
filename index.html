@@ -3,128 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymCaller | 24/7 AI Receptionist for Gyms</title>
+    <title>GymCaller | AI Receptionist for Gyms</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-teal: #14b8a6;
+            --teal: #14b8a6;
             --dark-blue: #0f172a;
-            --accent-blue: #3b82f6;
-            --light-bg: #f8fafc;
-            --white: #ffffff;
+            --midnight: #020617;
+            --soft-white: #f8fafc;
+            --text-gray: #475569;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--light-bg); color: #334155; line-height: 1.6; }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; } /* Makes clicking links smooth */
+        body { font-family: 'Inter', sans-serif; background-color: var(--soft-white); color: var(--midnight); line-height: 1.6; }
+
         /* Navigation */
-        nav { background: var(--dark-blue); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-teal); }
-        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
-        .cta-btn { background: var(--primary-teal); padding: 10px 20px; border-radius: 5px; color: var(--dark-blue) !important; font-weight: bold; }
+        nav { 
+            background: var(--midnight); 
+            padding: 1.2rem 8%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        .logo-text { font-weight: 800; font-size: 1.5rem; color: white; text-decoration: none; }
+        .logo-text span { color: var(--teal); }
+        .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 25px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--teal); }
+        .btn-nav { background: var(--teal); color: var(--midnight) !important; padding: 10px 20px; border-radius: 6px; font-weight: 700; }
 
         /* Hero Section */
-        header { background: linear-gradient(135deg, var(--dark-blue) 0%, #1e293b 100%); color: white; padding: 80px 5%; text-align: center; }
-        header h1 { font-size: 3rem; margin-bottom: 20px; }
-        header p { font-size: 1.25rem; max-width: 800px; margin: 0 auto 30px; opacity: 0.9; }
+        header { 
+            height: 85vh;
+            background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.8)), 
+                        url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+        .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 20px; }
+        .hero-content p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; color: #cbd5e1; }
 
-        /* Features Section */
-        .section { padding: 60px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .card { background: white; padding: 30px; border-radius: 10px; border-top: 5px solid var(--primary-teal); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .card h3 { color: var(--dark-blue); margin-bottom: 15px; }
+        /* Sections */
+        .section { padding: 100px 10%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--dark-blue); }
 
-        /* Pricing */
-        .pricing { background: var(--dark-blue); color: white; text-align: center; }
-        .price-box { background: rgba(255,255,255,0.1); padding: 40px; border-radius: 15px; display: inline-block; margin-top: 20px; }
-        .price-box h2 { font-size: 2.5rem; color: var(--primary-teal); }
+        /* Features */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card { background: white; padding: 35px; border-radius: 12px; border-top: 4px solid var(--teal); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
+        .feature-card h3 { margin-bottom: 15px; color: var(--dark-blue); }
 
-        /* About / Personnel */
-        .about-grid { display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; }
-        .person { margin: 20px; }
+        /* Pricing Card */
+        .price-container { display: flex; justify-content: center; }
+        .price-card { 
+            background: var(--dark-blue); 
+            color: white; 
+            padding: 50px; 
+            border-radius: 20px; 
+            text-align: center; 
+            max-width: 500px;
+            width: 100%;
+            border: 2px solid var(--teal);
+        }
+        .price-tag { font-size: 3.5rem; font-weight: 800; color: var(--teal); margin: 20px 0; }
+        .price-card ul { list-style: none; text-align: left; margin: 30px 0; }
+        .price-card li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .price-card li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: bold; }
 
-        /* Form Section */
-        .contact-form { background: #e2e8f0; border-radius: 10px; padding: 40px; max-width: 600px; margin: 0 auto; }
-        .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #cbd5e1; border-radius: 5px; }
+        /* Booking Form */
+        .booking-layout { display: flex; gap: 50px; flex-wrap: wrap; }
+        .booking-info { flex: 1; min-width: 300px; }
+        .form-container { flex: 1; min-width: 300px; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .submit-btn { width: 100%; background: var(--teal); color: var(--midnight); border: none; padding: 15px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 1rem; }
+
+        /* Footer */
+        footer { background: var(--midnight); color: white; padding: 60px 10% 20px; text-align: center; }
+        .team { display: flex; justify-content: center; gap: 50px; margin: 30px 0; border-top: 1px solid #334155; padding-top: 30px; }
         
-        footer { background: #020617; color: white; text-align: center; padding: 40px 0; margin-top: 60px; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Simplified for mobile example */
+        }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">GymCaller</div>
-    <div>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#demo" class="cta-btn">Book Demo</a>
-    </div>
-</nav>
-
-<header>
-    <h1>Your Gym Never Misses a Call Again</h1>
-    <p>The 24/7 AI receptionist that handles leads, books tours, and answers questions—so you can focus on the floor.</p>
-    <a href="#demo" class="cta-btn" style="padding: 15px 30px; font-size: 1.1rem;">Start Your 7-Day Free Trial</a>
-</header>
-
-<section id="features" class="section">
-    <h2 style="text-align: center;">Why Gym Owners Choose GymCaller</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>24/7 Call Answering</h3>
-            <p>Answers inbound calls at any time, including after hours, weekends, and during peak "January rush" times.</p>
+    <nav>
+        <a href="#" class="logo-text">Gym<span>Caller</span></a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#about">About</a>
+            <a href="#book-demo" class="btn-nav">Book Demo</a>
         </div>
-        <div class="card">
-            <h3>Automated Tour Booking</h3>
-            <p>Guides prospects through your process and books tours based on your actual availability.</p>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <h1>Never Miss a Lead Again.</h1>
+            <p>GymCaller is the 24/7 AI receptionist built specifically for gyms. It speaks naturally, answers questions, and books tours while you focus on training.</p>
+            <a href="#book-demo" class="btn-nav" style="padding: 15px 40px; font-size: 1.1rem; text-decoration: none;">Start 1-Week Free Trial</a>
         </div>
-        <div class="card">
-            <h3>Real-Time Transcripts</h3>
-            <p>Every call is transcribed. Review exactly what leads asked so your staff can follow up effectively.</p>
+    </header>
+
+    <section id="features" class="section">
+        <div class="section-title">
+            <h2>Gym-Specific AI Features</h2>
+            <p>Built by gym experts to solve real operational problems.</p>
         </div>
-    </div>
-</section>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>24/7 Coverage</h3>
+                <p>Answers inbound calls at any time—weekends, holidays, and after-hours coverage included.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Smart Tour Booking</h3>
+                <p>Guides prospects through your specific intro process and collects key lead info like name, goals, and intent.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Full Accountability</h3>
+                <p>Provides full call transcripts for every conversation so your staff can review exactly what was discussed.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Policy Intelligence</h3>
+                <p>Answers FAQs about membership ranges, class types, and gym policies based on your unique data.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Natural Voice</h3>
+                <p>Handles real conversations without rigid scripts, providing a consistent and professional response every time.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Staff Optimization</h3>
+                <p>Reduces front desk workload, allowing your team to focus on the members already in the building.</p>
+            </div>
+        </div>
+    </section>
 
-<section id="pricing" class="section pricing">
-    <h2>Transparent Pricing</h2>
-    <div class="price-box">
-        <h3>Full Access Plan</h3>
-        <h2>$99/month</h2>
-        <p>Unlimited Calls • Tour Booking • Transcripts</p>
-        <p><strong>Includes a 1-Week Free Trial</strong></p>
-    </div>
-</section>
+    <section id="pricing" class="section" style="background: #f1f5f9;">
+        <div class="section-title">
+            <h2>Simple Pricing</h2>
+        </div>
+        <div class="price-container">
+            <div class="price-card">
+                <h3>The Professional Plan</h3>
+                <div class="price-tag">$99<span>/mo</span></div>
+                <ul>
+                    <li>Unlimited Inbound Call Handling</li>
+                    <li>Automated Lead Capture</li>
+                    <li>Tour & Appointment Scheduling</li>
+                    <li>Full Transcript Dashboard</li>
+                    <li>7-Day Free Trial</li>
+                </ul>
+                <a href="#book-demo" class="btn-nav" style="display: block; text-decoration: none;">Get Started Now</a>
+            </div>
+        </div>
+    </section>
 
-<section id="demo" class="section">
-    <div class="contact-form">
-        <h2 style="text-align: center; margin-bottom: 20px;">Request a Demo</h2>
-        <form>
-            <input type="text" placeholder="Gym Name" required>
-            <input type="email" placeholder="Work Email" required>
-            <label>What is your biggest phone-related challenge?</label>
-            <select>
-                <option>Missed calls during peak hours</option>
-                <option>No coverage after-hours</option>
-                <option>Distracted front desk staff</option>
-                <option>Other</option>
-            </select>
-            <textarea placeholder="How do you currently handle tour bookings?" rows="4"></textarea>
-            <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer;">Schedule Demo</button>
-        </form>
-    </div>
-</section>
+    <section id="book-demo" class="section">
+        <div class="booking-layout">
+            <div class="booking-info">
+                <h2>Qualify Your Gym</h2>
+                <p style="margin: 20px 0;">We’re locally owned in <strong>La Grange Park, IL</strong> and we want to ensure GymCaller is the right fit for your operations. Answer two quick questions to see the demo.</p>
+                <ul style="list-style: none;">
+                    <li><strong>✓</strong> Immediate value for busy owners.</li>
+                    <li><strong>✓</strong> 2-minute setup process.</li>
+                    <li><strong>✓</strong> Zero missed memberships.</li>
+                </ul>
+            </div>
+            <div class="form-container">
+                <form action="#">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="text" placeholder="Gym Name" required>
+                    <select required>
+                        <option value="" disabled selected>Your biggest phone problem?</option>
+                        <option value="missed">Missed calls during training</option>
+                        <option value="hours">No coverage after-hours</option>
+                        <option value="distraction">Front desk is too busy</option>
+                    </select>
+                    <textarea placeholder="Tell us about your current tour booking process..." rows="3"></textarea>
+                    <button type="submit" class="submit-btn">Request a Demo</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-<section class="section">
-    <h2 style="text-align: center;">About GymCaller</h2>
-    <p style="text-align: center; max-width: 700px; margin: 20px auto;">Locally owned and operated in <strong>La Grange Park, Illinois</strong>. We build specialized AI tools to help gym owners regain their time and capture every membership opportunity.</p>
-    <div class="about-grid">
-        <div class="person"><strong>Founder:</strong><br>Billy Schwerha</div>
-        <div class="person"><strong>Lead Developer:</strong><br>Matt Jablonski</div>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2025 GymCaller. All Rights Reserved. La Grange Park, IL.</p>
-</footer>
+    <footer id="about">
+        <h2>GymCaller AI</h2>
+        <p>Locally owned and operated in La Grange Park, Illinois.</p>
+        <div class="team">
+            <div>
+                <strong>Billy Schwerha</strong><br>
+                Founder
+            </div>
+            <div>
+                <strong>Matt Jablonski</strong><br>
+                Lead Developer
+            </div>
+        </div>
+        <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 20px;">&copy; 2025 GymCaller. Direct. Professional. Informative.</p>
+    </footer>
 
 </body>
 </html>
