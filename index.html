@@ -101,7 +101,13 @@
 <body>
 
     <nav>
-        <a href="#" class="logo-text">Gym<span>Caller</span></a>
+        <a href="#" class="logo-container" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="logo.jpeg" alt="GymCaller Logo" style="height: 50px; width: auto; margin-right: 12px; border-radius: 4px;">
+        
+            <div class="logo-text" style="color: white; font-weight: 800; font-size: 1.5rem;">
+                Gym<span style="color: #14b8a6;">Caller</span>
+            </div>
+        </a>
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#pricing">Pricing</a>
@@ -109,6 +115,7 @@
             <a href="#book-demo" class="btn-nav">Book Demo</a>
         </div>
     </nav>
+    
 
     <header>
         <div class="hero-content">
@@ -183,16 +190,29 @@
                 </ul>
             </div>
             <div class="form-container">
-                <form action="#">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="text" placeholder="Gym Name" required>
-                    <select required>
-                        <option value="" disabled selected>Your biggest phone problem?</option>
-                        <option value="missed">Missed calls during training</option>
-                        <option value="hours">No coverage after-hours</option>
-                        <option value="distraction">Front desk is too busy</option>
+                <form action="https://formspree.io/f/YOUR_ID" method="POST">
+    
+                    <label>Name</label>
+                    <input type="text" name="Lead Name" placeholder="Your Name" required>
+    
+                    <label>Gym Name</label>
+                    <input type="text" name="Gym Name" placeholder="Gym Name" required>
+    
+                    <label>Email</label>
+                    <input type="email" name="_replyto" placeholder="Your Email" required>
+    
+                    <label>Biggest Phone Challenge?</label>
+                    <select name="Challenge" required>
+                        <option value="" disabled selected>Select an option...</option>
+                        <option value="No coverage after-hours">No coverage after-hours</option>
+                        <option value="Inconsistent staff responses">Inconsistent staff responses</option>
                     </select>
-                    <textarea placeholder="Tell us about your current tour booking process..." rows="3"></textarea>
+    
+                    <label>Tour Booking Process</label>
+                    <textarea name="Current Process" placeholder="Tell us a little bit about your gym!" rows="3"></textarea>
+    
+                    <input type="hidden" name="_subject" value="New GymCaller Demo Request!">
+
                     <button type="submit" class="submit-btn">Request a Demo</button>
                 </form>
             </div>
@@ -217,3 +237,4 @@
 
 </body>
 </html>
+
