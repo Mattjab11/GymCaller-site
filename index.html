@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymCaller | 24/7 AI Receptionist for Gyms</title>
+    <style>
+        :root {
+            --primary-teal: #14b8a6;
+            --dark-blue: #0f172a;
+            --accent-blue: #3b82f6;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-bg); color: #334155; line-height: 1.6; }
+        
+        /* Navigation */
+        nav { background: var(--dark-blue); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-teal); }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+        .cta-btn { background: var(--primary-teal); padding: 10px 20px; border-radius: 5px; color: var(--dark-blue) !important; font-weight: bold; }
+
+        /* Hero Section */
+        header { background: linear-gradient(135deg, var(--dark-blue) 0%, #1e293b 100%); color: white; padding: 80px 5%; text-align: center; }
+        header h1 { font-size: 3rem; margin-bottom: 20px; }
+        header p { font-size: 1.25rem; max-width: 800px; margin: 0 auto 30px; opacity: 0.9; }
+
+        /* Features Section */
+        .section { padding: 60px 10%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { background: white; padding: 30px; border-radius: 10px; border-top: 5px solid var(--primary-teal); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .card h3 { color: var(--dark-blue); margin-bottom: 15px; }
+
+        /* Pricing */
+        .pricing { background: var(--dark-blue); color: white; text-align: center; }
+        .price-box { background: rgba(255,255,255,0.1); padding: 40px; border-radius: 15px; display: inline-block; margin-top: 20px; }
+        .price-box h2 { font-size: 2.5rem; color: var(--primary-teal); }
+
+        /* About / Personnel */
+        .about-grid { display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; }
+        .person { margin: 20px; }
+
+        /* Form Section */
+        .contact-form { background: #e2e8f0; border-radius: 10px; padding: 40px; max-width: 600px; margin: 0 auto; }
+        .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #cbd5e1; border-radius: 5px; }
+        
+        footer { background: #020617; color: white; text-align: center; padding: 40px 0; margin-top: 60px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">GymCaller</div>
+    <div>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#demo" class="cta-btn">Book Demo</a>
+    </div>
+</nav>
+
+<header>
+    <h1>Your Gym Never Misses a Call Again</h1>
+    <p>The 24/7 AI receptionist that handles leads, books tours, and answers questions—so you can focus on the floor.</p>
+    <a href="#demo" class="cta-btn" style="padding: 15px 30px; font-size: 1.1rem;">Start Your 7-Day Free Trial</a>
+</header>
+
+<section id="features" class="section">
+    <h2 style="text-align: center;">Why Gym Owners Choose GymCaller</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>24/7 Call Answering</h3>
+            <p>Answers inbound calls at any time, including after hours, weekends, and during peak "January rush" times.</p>
+        </div>
+        <div class="card">
+            <h3>Automated Tour Booking</h3>
+            <p>Guides prospects through your process and books tours based on your actual availability.</p>
+        </div>
+        <div class="card">
+            <h3>Real-Time Transcripts</h3>
+            <p>Every call is transcribed. Review exactly what leads asked so your staff can follow up effectively.</p>
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="section pricing">
+    <h2>Transparent Pricing</h2>
+    <div class="price-box">
+        <h3>Full Access Plan</h3>
+        <h2>$99/month</h2>
+        <p>Unlimited Calls • Tour Booking • Transcripts</p>
+        <p><strong>Includes a 1-Week Free Trial</strong></p>
+    </div>
+</section>
+
+<section id="demo" class="section">
+    <div class="contact-form">
+        <h2 style="text-align: center; margin-bottom: 20px;">Request a Demo</h2>
+        <form>
+            <input type="text" placeholder="Gym Name" required>
+            <input type="email" placeholder="Work Email" required>
+            <label>What is your biggest phone-related challenge?</label>
+            <select>
+                <option>Missed calls during peak hours</option>
+                <option>No coverage after-hours</option>
+                <option>Distracted front desk staff</option>
+                <option>Other</option>
+            </select>
+            <textarea placeholder="How do you currently handle tour bookings?" rows="4"></textarea>
+            <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer;">Schedule Demo</button>
+        </form>
+    </div>
+</section>
+
+<section class="section">
+    <h2 style="text-align: center;">About GymCaller</h2>
+    <p style="text-align: center; max-width: 700px; margin: 20px auto;">Locally owned and operated in <strong>La Grange Park, Illinois</strong>. We build specialized AI tools to help gym owners regain their time and capture every membership opportunity.</p>
+    <div class="about-grid">
+        <div class="person"><strong>Founder:</strong><br>Billy Schwerha</div>
+        <div class="person"><strong>Lead Developer:</strong><br>Matt Jablonski</div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 GymCaller. All Rights Reserved. La Grange Park, IL.</p>
+</footer>
+
+</body>
+</html>
