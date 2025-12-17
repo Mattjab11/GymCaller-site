@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,37 +18,38 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: var(--soft-white); color: var(--midnight); line-height: 1.6; }
 
-        /* Top Contact Bar */
+        /* Top Contact Bar - FIXED: Now scrolls with page (relative) and wraps nicely */
         .top-bar {
             background: var(--teal);
             color: var(--midnight);
-            padding: 8px 8%;
+            padding: 10px 5%;
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-end; /* Right align on desktop */
+            align-items: center;
+            flex-wrap: wrap; /* Allows stacking on mobile */
             gap: 20px;
             font-size: 0.85rem;
             font-weight: 700;
-            position: fixed;
+            position: relative; /* Scrolls with the page */
             width: 100%;
-            top: 0;
-            z-index: 1001;
+            z-index: 1002;
         }
-        .top-bar a { color: var(--midnight); text-decoration: none; }
-
-        /* Navigation */
+        .top-bar a { color: var(--midnight); text-decoration: none; display: inline-flex; align-items: center; }
+        
+        /* Navigation - FIXED: Sticky behavior */
         nav { 
             background: var(--midnight); 
-            padding: 1.2rem 8%; 
+            padding: 1rem 8%; 
             display: flex; 
             justify-content: space-between; 
-            aln-items: center; 
-            position: fixed; 
+            align-items: center; /* Fixed typo aln-items */
+            position: sticky; /* Sticks to top when scrolling past */
             width: 100%; 
-            top: 35px; /* Pushed down by top bar */
+            top: 0; 
             z-index: 1000;
             border-bottom: 1px solid rgba(20, 184, 166, 0.2);
         }
-        .logo-text { font-weht: 800; font-size: 1.5rem; color: white; text-decoration: none; }
+        .logo-text { font-weight: 800; font-size: 1.5rem; color: white; text-decoration: none; } /* Fixed typo font-weht */
         .logo-text span { color: var(--teal); }
         .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 25px; font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--teal); }
@@ -67,13 +68,13 @@
             text-align: center;
             color: white;
             padding: 0 5%;
-            margin-top: 95px; /* Offset for both bars */
+            margin-top: 0; /* Removed manual offset since bars aren't fixed over content anymore */
         }
         .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 20px; }
         .hero-content p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; color: #cbd5e1; }
 
         /* Sections */
-        .section { padding: 100px 10%; }
+        .section { padding: 80px 8%; } /* Adjusted padding for mobile */
         .section-title { text-align: center; margin-bottom: 60px; }
         .section-title h2 { font-size: 2.5rem; color: var(--dark-blue); }
 
@@ -87,7 +88,7 @@
         .price-card { 
             background: var(--dark-blue); 
             color: white; 
-            padding: 50px; 
+            padding: 40px; 
             border-radius: 20px; 
             text-align: center; 
             max-width: 500px;
@@ -102,7 +103,7 @@
         /* Booking Form */
         .booking-layout { display: flex; gap: 50px; flex-wrap: wrap; }
         .booking-info { flex: 1; min-width: 300px; }
-        .form-container { flex: 1; min-width: 300px; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .form-container { flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
         label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.9rem; }
         .submit-btn { width: 100%; background: var(--teal); color: var(--midnight); border: none; padding: 15px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 1rem; }
@@ -110,18 +111,28 @@
         /* Footer */
         footer { background: var(--midnight); color: white; padding: 60px 10% 20px; text-align: center; }
         .footer-contact { margin: 25px 0; color: #cbd5e1; }
-        .footer-contact a { color: var(--teal); text-decoration: none; margin: 0 15px; }
+        .footer-contact a { color: var(--teal); text-decoration: none; margin: 0 10px; display: inline-block; }
         .team { display: flex; justify-content: center; gap: 50px; margin: 30px 0; border-top: 1px solid #334155; padding-top: 30px; }
         
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .top-bar { justify-content: center; gap: 10px; font-size: 0.75rem; }
+            /* Mobile tweaks for the top bar */
+            .top-bar { 
+                justify-content: center; 
+                text-align: center; 
+                gap: 15px; 
+                padding: 12px;
+            }
+            .top-bar span { display: block; width: auto; margin: 0 5px; }
+            
+            .section-title h2 { font-size: 2rem; }
+            .booking-layout { gap: 30px; }
         }
     </style>
 </head>
 <body>
 
-       <div class="top-bar">
+    <div class="top-bar">
         <span>Email: <a href="mailto:gymcallerai@gmail.com">gymcallerai@gmail.com</a></span>
         <span>Phone: <a href="tel:7088186429">708-818-6429</a></span>
         <span>Instagram: <a href="https://instagram.com/gymcallerai" target="_blank">@gymcallerai</a></span>
@@ -129,7 +140,7 @@
 
     <nav>
         <a href="#" class="logo-container" style="display: flex; align-items: center; text-decoration: none;">
-            <img src="logo.png" alt="GymCaller Logo" style="height: 45px; width: auto; margin-right: 12px; border-radius: 4px;">
+            <div style="height: 40px; width: 40px; background: var(--teal); border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-right: 12px; color: var(--midnight); font-weight: bold;">G</div>
             <div class="logo-text">Gym<span>Caller</span></div>
         </a>
         <div class="nav-links">
@@ -138,13 +149,14 @@
             <a href="#about">About</a>
             <a href="#book-demo" class="btn-nav">Book Demo</a>
         </div>
+        <a href="#book-demo" class="btn-nav" style="display: none; @media(max-width:768px){display:block;} font-size: 0.9rem; padding: 8px 15px;">Book Demo</a>
     </nav>
 
     <header>
         <div class="hero-content">
             <h1>Never Miss a Lead Again.</h1>
             <p>GymCaller is the 24/7 AI receptionist built specifically for gyms. Answer questions and book tours while you focus on training.</p>
-            <a href="#book-demo" class="btn-nav" style="padding: 15px 40px; font-size: 1.1rem; text-decoration: none;">Start 1-Week Free Trial</a>
+            <a href="#book-demo" class="btn-nav" style="padding: 15px 40px; font-size: 1.1rem; text-decoration: none; display: inline-block;">Start 1-Week Free Trial</a>
         </div>
     </header>
 
@@ -203,8 +215,10 @@
                     <label>Biggest Phone Challenge?</label>
                     <select name="Challenge" required>
                         <option value="" disabled selected>Select an option...</option>
-                        <option value="No coverage after-hours">No coverage after-hours</option>
+                        <option value="No coverage during peak hours">No coverage during peak hours</option>
                         <option value="Inconsistent staff responses">Inconsistent staff responses</option>
+                        <option value="Missed calls after-hours and on holidays">Missed calls after-hours and on holidays</option>
+                        <option value="Time spent answering basic FAQ's">Time spent answering basic FAQ's</option>
                     </select>
                     <label>Tour Booking Process</label>
                     <textarea name="Current Process" placeholder="Tell us a little bit about your gym!" rows="3"></textarea>
@@ -218,11 +232,12 @@
     <footer id="about">
         <div class="logo-text">Gym<span>Caller</span> AI</div>
         
-       <div class="footer-contact">
+        <div class="footer-contact">
             <p><strong>Contact Us:</strong></p>
-                <a href="mailto:gymcallerai@gmail.com">gymcallerai@gmail.com</a> | 
-                <a href="tel:7088186429">708-818-6429</a> |
-                <a href="https://instagram.com/gymcallerai" target="_blank">@gymcallerai</a>
+            <br>
+            <a href="mailto:gymcallerai@gmail.com">gymcallerai@gmail.com</a> <span style="color:#64748b">|</span> 
+            <a href="tel:7088186429">708-818-6429</a> <span style="color:#64748b">|</span>
+            <a href="https://instagram.com/gymcallerai" target="_blank">@gymcallerai</a>
        </div>
 
         <p>Locally owned and operated in La Grange Park, Illinois.</p>
@@ -250,7 +265,11 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    window.location.href = "success.html";
+                    // You might want to change this if success.html doesn't exist yet
+                    alert("Thanks! We will reach out shortly.");
+                    form.reset();
+                    button.disabled = false;
+                    button.innerText = "Request a Demo";
                 } else {
                     alert("Oops! There was a problem submitting your form");
                     button.disabled = false;
@@ -266,6 +285,3 @@
     </script>
 </body>
 </html>
-
-
-
